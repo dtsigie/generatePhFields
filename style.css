@@ -1,0 +1,24 @@
+#main {
+  text-align: center;
+}
+
+/* 
+textarea {
+  overflow: hidden;
+  padding: 10px;
+  width: 250px;
+  font-size: 14px;
+  margin: 50px auto;
+  display: block;
+  border-radius: 10px;
+} */
+
+textarea {
+  border: none !important;
+  height: 700px !important'
+
+}
+
+li {
+  list-style-type: none;
+}
