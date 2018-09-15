@@ -94,26 +94,34 @@
     function makeApiCall() {
       var params = {
         // The ID of the spreadsheet to retrieve data from.
-        spreadsheetId: '1KKEflFI8w9VXvEPey--x-ImsQwDSQwg2rm76WxOXLvs', // TODO: Update placeholder value.
-
+        spreadsheetId: '1KKEflFI8w9VXvEPey--x-ImsQwDSQwg2rm76WxOXLvs',
         // The A1 notation of the values to retrieve.
-        range: 'Sheet1', // TODO: Update placeholder value.
-
-        // How values should be represented in the output.
-        // The default render option is ValueRenderOption.FORMATTED_VALUE.
-        //valueRenderOption: '', // TODO: Update placeholder value.
-
-        // How dates, times, and durations should be represented in the output.
-        // This is ignored if value_render_option is
-        // FORMATTED_VALUE.
-        // The default dateTime render option is [DateTimeRenderOption.SERIAL_NUMBER].
-        //dateTimeRenderOption: '', // TODO: Update placeholder value.
+        range: 'Sheet1',
       };
 
       var request = gapi.client.sheets.spreadsheets.values.get(params);
       request.then(function (response) {
-        // TODO: Change code below to process the `response` object:
-        console.log(response.result.values[0]);
+
+        function generateFields(e) {
+          let result = response.result.values[0];
+          // let textarea1 = document.querySelector("#sheets-url").value,
+          output = '';
+
+          // let newField = textarea1.split(" ");
+          // newField = Array.from(newField);
+          // console.log(newField);
+          for (let i = 0; i < result[i]; i++) {
+            output += `
+- name: ${result[i].toLocaleLowerCase()} 
+  type: String
+  default: ''`
+          };
+          outputArea.value = output;
+          e.preventDefault();
+
+
+        }
+
       }, function (reason) {
         console.error('error: ' + reason.result.error.message);
       });
