@@ -108,7 +108,7 @@
         // The A1 notation of the values to retrieve.
         range: 'Sheet1',
       };
-
+      console.log(typeof (params.spreadsheetId));
       var request = gapi.client.sheets.spreadsheets.values.get(params);
       request.then(function (response) {
           let result = response.result.values[0];
