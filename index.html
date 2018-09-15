@@ -14,9 +14,15 @@
 </head>
 
 <body>
-  <button class="waves-effect waves-light btn-small" id="signin-button" onclick="handleSignInClick()"> Sign in </button>
-  <button class="waves-effect waves-light btn-small" id="signout-button" onclick="handleSignOutClick()"> Sign out
-  </button>
+  <div id="sign">
+    <button class="waves-effect waves-light btn-small green lighten-1" id="signin-button" onclick="handleSignInClick()">
+      Sign in
+    </button>
+    <button class="waves-effect waves-light btn-small pink lighten-1" id="signout-button" onclick="handleSignOutClick()">
+      Sign out
+    </button>
+  </div>
+
   <h5 id="main"><strong> Field & Phone Generator</strong> </h5>
   <div class="container">
     <div class="row">
@@ -101,31 +107,22 @@
 
       var request = gapi.client.sheets.spreadsheets.values.get(params);
       request.then(function (response) {
-        let result = response.result.values[0];
-        console.log(result);
-
-        function generateFields(e) {
-          // let textarea1 = document.querySelector("#sheets-url").value,
+          let result = response.result.values[0],
+            outputArea = document.querySelector("#output");
+          console.log(result);
           output = '';
 
-          // let newField = textarea1.split(" ");
-          // newField = Array.from(newField);
-          // console.log(newField);
-          for (let i = 0; i < result[i]; i++) {
+          for (let i = 0; i < result.length; i++) {
             output += `
 - name: ${result[i].toLocaleLowerCase()} 
   type: String
   default: ''`
           };
           outputArea.value = output;
-          e.preventDefault();
-
-
-        }
-
-      }, function (reason) {
-        console.error('error: ' + reason.result.error.message);
-      });
+        },
+        function (reason) {
+          console.error('error: ' + reason.result.error.message);
+        });
     }
 
     function initClient() {

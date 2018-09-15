@@ -20,6 +20,10 @@ button {
 
 }
 
+/* #sign {
+  align-items: right !important;
+} */
+
 
 li {
   list-style-type: none;
