@@ -81,8 +81,9 @@
           </div>
           <div class="col m12 s12">
             <p><strong>Note:</strong></p>
+            <li>- You must "sign in" with a SignalVine email to generate fields</li>
+            <li>- Google sheets profile field url is needed to generate fields</li>
             <li>- Default type of all fields is "String"</li>
-            <li>- Fields must be separated either by a tab or a space</li>
           </div>
         </div>
       </div>
@@ -99,9 +100,12 @@
 
   <script>
     function makeApiCall() {
+      let url = document.querySelector('#sheets-url').value;
+      url = url.split("/")[5];
       var params = {
         // The ID of the spreadsheet to retrieve data from.
-        spreadsheetId: '1KKEflFI8w9VXvEPey--x-ImsQwDSQwg2rm76WxOXLvs',
+
+        spreadsheetId: url,
         // The A1 notation of the values to retrieve.
         range: 'Sheet1',
       };
@@ -111,13 +115,17 @@
           let result = response.result.values[0];
           console.log(result);
           output = '';
-
-          for (let i = 0; i < result.length; i++) {
-            output += `
+          if (result.length > 0) {
+            for (let i = 0; i < result.length; i++) {
+              output += `
 - name: ${result[i].toLocaleLowerCase()} 
   type: String
   default: ''`
-          };
+            };
+          } else {
+            output = ''
+          }
+
           document.querySelector("#output").value = output;
         },
         function (reason) {
@@ -126,11 +134,8 @@
     }
 
     function initClient() {
-      var API_KEY = 'AIzaSyA2jeOGeEb6MZP6GCyE7fJroDZ_rwFaG1Y'; // TODO: Update placeholder with desired API key.
-
-      var CLIENT_ID = '217086466266-fktsje9i2kr8hogt07b0u4phvuhvtd0d.apps.googleusercontent.com'; // TODO: Update placeholder with desired client ID.
-
-      // TODO: Authorize using one of the following scopes:
+      var API_KEY = 'AIzaSyA2jeOGeEb6MZP6GCyE7fJroDZ_rwFaG1Y';
+      var CLIENT_ID = '217086466266-fktsje9i2kr8hogt07b0u4phvuhvtd0d.apps.googleusercontent.com';
       //   'https://www.googleapis.com/auth/drive'
       //   'https://www.googleapis.com/auth/drive.file'
       //   'https://www.googleapis.com/auth/drive.readonly'
@@ -170,9 +175,7 @@
   <script async defer src="https://apis.google.com/js/api.js" onload="this.onload=function(){};handleClientLoad()"
     onreadystatechange="if (this.readyState === 'complete') this.onload()">
   </script>
-  <!-- <script src="sheets.js"></script> -->
   <script src="app.js"></script>
-  <!-- <script src="UI.js"></script> -->
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>
