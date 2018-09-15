@@ -30,20 +30,6 @@ function generatePhones(e) {
 
 function generateFields(e) {
 
-  //   let textarea1 = document.querySelector("#sheets-url").value,
-  //     output = '';
-
-  //   textarea1 = textarea1.replace(/\n\t\t+\s\s+/g, " ");
-  //   let newField = textarea1.split(" ");
-  //   newField = Array.from(newField);
-  //   console.log(newField);
-  //   for (let i = 0; i < newField.length; i++) {
-  //     output += `
-  //   - name: ${newField[i].toLocaleLowerCase()} 
-  //     type: String
-  //     default: ''`
-  //   };
-  //   outputArea.value = output;
   location.reload();
   e.preventDefault();
 

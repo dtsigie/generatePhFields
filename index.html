@@ -102,10 +102,11 @@
     function makeApiCall() {
       let url = document.querySelector('#sheets-url').value;
       url = url.split("/")[5];
+      console.log(url);
       var params = {
         // The ID of the spreadsheet to retrieve data from.
 
-        spreadsheetId: url,
+        spreadsheetId: 'url',
         // The A1 notation of the values to retrieve.
         range: 'Sheet1',
       };
@@ -176,7 +177,6 @@
     onreadystatechange="if (this.readyState === 'complete') this.onload()">
   </script>
   <script src="app.js"></script>
-
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>
 
