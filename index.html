@@ -104,13 +104,14 @@
       var params = {
         // The ID of the spreadsheet to retrieve data from.
         // spreadsheetId: document.querySelector('#sheets-url').value.split("/")[5],
-        spreadsheetId: '1_Pi8VmBbP_tjd8DZ-yNO3cmSDkRG6JUwu3ZslobJujU',
+        spreadsheetId: '1vi0s1UVl0jYLGn0P402ZyeflOsmdxAlx7tdXyUZzmFo',
         // The A1 notation of the values to retrieve.
         range: 'Sheet1',
       };
       console.log(typeof (params.spreadsheetId));
       var request = gapi.client.sheets.spreadsheets.values.get(params);
       request.then(function (response) {
+          console.log(response);
           let result = response.result.values[0];
           console.log(result);
           output = '';
