@@ -14,53 +14,72 @@
 </head>
 
 <body>
+  <h5 id="main"><strong> Field & Phone Generator</strong> </h5>
   <div class="container">
     <div class="row">
-      <h5 id="main"><strong> Field & Phone Generator</strong> </h5>
       <div class="col m6 s12">
-        <form action="#">
-          <h6>Choose aggregator:</h6>
-          <p>
-            <label>
-              <input name="group1" type="radio" value="bandwidth" checked />
-              <span>Bandwidth</span>
-            </label>
-          </p>
-          <p>
-            <label>
-              <input name="group1" type="radio" value="twilio" />
-              <span>Twilio</span>
-            </label>
-          </p>
-          <p>
-            <label>
-              <input name="group1" type="radio" value="hook" />
-              <span>Hook</span>
-            </label>
-          </p>
-          <div class="input-field col s12">
+        <div class="col m12 s12">
+          <div class="col m6 s12">
+            <form action="#">
+              <h6>Choose aggregator:</h6>
+              <p>
+                <label>
+                  <input name="group1" type="radio" value="bandwidth" checked />
+                  <span>Bandwidth</span>
+                </label>
+              </p>
+              <p>
+                <label>
+                  <input name="group1" type="radio" value="twilio" />
+                  <span>Twilio</span>
+                </label>
+              </p>
+              <p>
+                <label>
+                  <input name="group1" type="radio" value="hook" />
+                  <span>Hook</span>
+                </label>
+              </p>
+            </form>
+          </div>
+          <div class="col m6 s12">
+            <form action="#">
+              <h6>Enabled:</h6>
+              <p>
+                <label>
+                  <input name="group2" type="radio" value="true" checked />
+                  <span>True</span>
+                </label>
+              </p>
+              <p>
+                <label>
+                  <input name="group2" type="radio" value="false" />
+                  <span>False</span>
+                </label>
+              </p>
+            </form>
+          </div>
+          <div class="input-field col m12 s12">
             <textarea id="textarea1" class="materialize-textarea"></textarea>
             <label for="textarea1">Insert either phone numbers or fields</label>
+            <button id="phones" class="waves-effect waves-light btn-small" onclick="generatePhones()">Generate Phone
+              Numbers</button>
+            <button id="fields" class="waves-effect waves-light btn-small">Generate Fields</button>
           </div>
-          <button id="phones" class="waves-effect waves-light btn-small" onclick="generatePhones()">Generate Phone
-            Numbers</button>
-          <button id="fields" class="waves-effect waves-light btn-small">Generate Fields</button>
-        </form>
+          <div class="col m12 s12">
+            <p><strong>Note:</strong></p>
+            <li>- Default type of all fields is "String"</li>
+            <li>- Fields must be separated either by a tab or space</li>
+          </div>
+        </div>
       </div>
       <div class="col m6 s12">
-        <form action="#">
-          <h6> Output will be generated below:</h6>
-          <button id="copy-data" class="waves-effect waves-light btn-small" onclick="copyData()">Copy</button>
-          <textarea id="output" class="materialize-textarea">
-          </textarea>
-          <label for="output">output ...</label>
-        </form>
+        <h6> Output will be generated below:</h6>
+        <button id="copy-data" class="waves-effect waves-light btn-small blue" onclick="copyData()">Copy</button>
+        <div id="output-area">
+          <textarea id="output" class="materialize-textarea" value=""></textarea>
+        </div>
       </div>
-    </div>
-    <div class="row">
-      <p><strong>Notes:</strong></p>
-      <li>- Default type of all fields is "String"</li>
-      <li>- If you are generating fields there is no need to choose aggregator</li>
     </div>
   </div>
 
