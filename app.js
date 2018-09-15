@@ -5,13 +5,15 @@ document.querySelector("#phones").addEventListener('click', generatePhones);
 document.querySelector("#fields").addEventListener('click', generateFields);
 
 document.querySelector("#copy-data").addEventListener('click', copyData);
+
+let id = document.querySelector('#sheets-url').value.split('/')[5];
 let outputArea = document.querySelector("#output");
 
 function generatePhones(e) {
-  let textarea1 = document.querySelector("#textarea1").value;
-  let aggregator = document.querySelector('input[name=group1]:checked').value;
-  let enabled = document.querySelector('input[name=group2]:checked').value;
-  let output = '';
+  let textarea1 = document.querySelector("#textarea1").value,
+    aggregator = document.querySelector('input[name=group1]:checked').value,
+    enabled = document.querySelector('input[name=group2]:checked').value,
+    output = '';
 
   textarea1 = textarea1.replace(/\n/g, " ");
   let newField = textarea1.split(" ");
@@ -22,15 +24,14 @@ function generatePhones(e) {
   aggregator: ${aggregator}`
 
   }
-  document.querySelector("#output").value = output;
+  outputArea.value = output;
   e.preventDefault();
 }
 
 function generateFields(e) {
 
-  let textarea1 = document.querySelector("#textarea1").value;
-  let output = '';
-
+  let textarea1 = document.querySelector("#sheets-url").value,
+    output = '';
 
   textarea1 = textarea1.replace(/\n\t\t+\s\s+/g, " ");
   let newField = textarea1.split(" ");
@@ -38,16 +39,17 @@ function generateFields(e) {
   console.log(newField);
   for (let i = 0; i < newField.length; i++) {
     output += `
-- name: ${newField[i].toLocaleLowerCase()} 
-  type: String
-  default: ''`
+  - name: ${newField[i].toLocaleLowerCase()} 
+    type: String
+    default: ''`
   };
-  document.querySelector("#output").value = output;
+  outputArea.value = output;
   e.preventDefault();
+
+
 }
 
 function copyData() {
-  let copyText = document.querySelector("#output");
-  copyText.select();
+  outputArea.select();
   document.execCommand("copy");
 }
