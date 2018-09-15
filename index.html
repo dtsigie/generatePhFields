@@ -101,9 +101,9 @@
 
       var request = gapi.client.sheets.spreadsheets.values.get(params);
       request.then(function (response) {
+        let result = response.result.values[0];
 
         function generateFields(e) {
-          let result = response.result.values[0];
           // let textarea1 = document.querySelector("#sheets-url").value,
           output = '';
 
