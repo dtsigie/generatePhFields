@@ -101,11 +101,9 @@
   <script>
     function makeApiCall() {
 
-      let url = document.querySelector('#sheets-url').value.split("/")[5];
-
       var params = {
         // The ID of the spreadsheet to retrieve data from.
-        spreadsheetId: url,
+        spreadsheetId: document.querySelector('#sheets-url').value.split("/")[5],
         // The A1 notation of the values to retrieve.
         range: 'Sheet1',
       };
