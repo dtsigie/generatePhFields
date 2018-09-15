@@ -6,8 +6,8 @@ document.querySelector("#fields").addEventListener('click', generateFields);
 
 document.querySelector("#copy-data").addEventListener('click', copyData);
 
-let id = document.querySelector('#sheets-url').value.split('/')[5];
-let outputArea = document.querySelector("#output");
+let id = document.querySelector('#sheets-url').value.split('/')[5],
+  outputArea = document.querySelector("#output");
 
 function generatePhones(e) {
   let textarea1 = document.querySelector("#textarea1").value,
@@ -51,7 +51,6 @@ function generateFields(e) {
 }
 
 function copyData() {
-  let outputArea = document.querySelector("#output");
   outputArea.select();
   document.execCommand("copy");
 }

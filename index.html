@@ -15,10 +15,10 @@
 
 <body>
   <div id="sign">
-    <button class="waves-effect waves-light btn-small green lighten-1" id="signin-button" onclick="handleSignInClick()">
+    <button class="waves-effect waves-light btn-small yellow darken-4" id="signin-button" onclick="handleSignInClick()">
       Sign in
     </button>
-    <button class="waves-effect waves-light btn-small pink lighten-1" id="signout-button" onclick="handleSignOutClick()">
+    <button class="waves-effect waves-light btn-small  deep-orange darken-4" id="signout-button" onclick="handleSignOutClick()">
       Sign out
     </button>
   </div>
@@ -107,8 +107,7 @@
 
       var request = gapi.client.sheets.spreadsheets.values.get(params);
       request.then(function (response) {
-          let result = response.result.values[0],
-            outputArea = document.querySelector("#output");
+          let result = response.result.values[0];
           console.log(result);
           output = '';
 
@@ -118,7 +117,7 @@
   type: String
   default: ''`
           };
-          outputArea.value = output;
+          document.querySelector("#output").value = output;
         },
         function (reason) {
           console.error('error: ' + reason.result.error.message);
