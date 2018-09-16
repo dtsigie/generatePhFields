@@ -100,14 +100,14 @@
 
   <script>
     function makeApiCall() {
-
+      let url = document.querySelector('#sheets-url').value.split("/")[5]
       var params = {
         // The ID of the spreadsheet to retrieve data from.
-        // spreadsheetId: document.querySelector('#sheets-url').value.split("/")[5],
-        spreadsheetId: '1vi0s1UVl0jYLGn0P402ZyeflOsmdxAlx7tdXyUZzmFo',
+        spreadsheetId: '',
         // The A1 notation of the values to retrieve.
-        range: 'Sheet1',
+        range: 'A1:Z1',
       };
+      params.spreadsheetId = url;
       console.log(typeof (params.spreadsheetId));
       var request = gapi.client.sheets.spreadsheets.values.get(params);
       request.then(function (response) {
