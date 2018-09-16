@@ -116,6 +116,10 @@ function generateFields(e) {
 
 }
 
+function generateDataset() {
+
+}
+
 function copyData() {
   outputArea.select();
   document.execCommand("copy");
