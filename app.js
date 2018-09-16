@@ -31,12 +31,12 @@ function generatePhones(e) {
 
 function generateFields(e) {
 
-  let url = document.querySelector('#sheets-url').value.split("/")[5];
+  // let url = document.querySelector('#sheets-url').value.split("/")[5];
 
   function makeApiCall() {
     var params = {
       // The ID of the spreadsheet to retrieve data from.
-      spreadsheetId: '',
+      spreadsheetId: '1KKEflFI8w9VXvEPey--x-ImsQwDSQwg2rm76WxOXLvs',
       // The A1 notation of the values to retrieve.
       range: 'A1:Z1',
     };
