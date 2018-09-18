@@ -75,7 +75,7 @@
             <button id="phones" class="waves-effect waves-light btn-small" onclick="generatePhones()">Generate Phone
               Numbers</button>
             <div class="col s12 m12" style="padding: 0px">
-              <input id="profile-url" type="text" placeholder="insert Google sheets profile filed url">
+              <input id="sheet-url" type="text" placeholder="insert Google sheets profile filed url">
               <button id="fields" class="waves-effect waves-light btn-small" onclick="generateFields()">Generate Fields</button>
               <input id="profile-url" type="text" placeholder="insert Google sheets dataset url">
               <button id="fields" class="waves-effect waves-light btn-small" onclick="generateDataset()">Generate
@@ -103,12 +103,14 @@
 
 
   <script>
-    // let url = document.querySelector('#sheets-url').value.split("/")[5];
+    let url = document.getElementById('profile-url').value,
+      id = url.split('/')[5];
 
-    function makeApiCall() {
+
+    function makeApiCall(id) {
       var params = {
         // The ID of the spreadsheet to retrieve data from.
-        spreadsheetId: '1HKp0lu2CKFV7DS1DsmEFSwjESx9TNkn2H5OcDK9lYOA',
+        spreadsheetId: id,
         // The A1 notation of the values to retrieve.
         range: 'A1:Z1',
       };
