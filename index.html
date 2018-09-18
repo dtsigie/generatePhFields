@@ -76,10 +76,11 @@
               Numbers</button>
             <div class="col s12 m12" style="padding: 0px">
               <input id="sheet-url" type="text" placeholder="insert Google sheets profile filed url">
-              <button id="fields" class="waves-effect waves-light btn-small" onclick="generateFields()">Generate Fields</button>
-              <input id="profile-url" type="text" placeholder="insert Google sheets dataset url">
+              <button id="fields" class="waves-effect waves-light btn-small" onclick="generateFields(e)">Generate
+                Fields</button>
+              <!-- <input id="profile-url" type="text" placeholder="insert Google sheets dataset url">
               <button id="fields" class="waves-effect waves-light btn-small" onclick="generateDataset()">Generate
-                Dataset</button>
+                Dataset</button> -->
             </div>
           </div>
           <div class="col m12 s12">
@@ -102,10 +103,8 @@
   </div>
 
 
-  <script>
-    let url = document.getElementById('profile-url').value,
-      id = url.split('/')[5];
-
+  <!-- <script>
+    
 
     function makeApiCall(id) {
       var params = {
@@ -178,7 +177,7 @@
     function handleSignOutClick(event) {
       gapi.auth2.getAuthInstance().signOut();
     }
-  </script>
+  </script> -->
 
   <script src="app.js"></script>
   <script async defer src="https://apis.google.com/js/api.js" onload="this.onload=function(){};handleClientLoad()"
