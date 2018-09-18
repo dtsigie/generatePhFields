@@ -25,7 +25,7 @@ function generatePhones(e) {
   aggregator: ${aggregator}`
 
   }
-  outputArea.value = output;
+  document.querySelector("#output").value = output;
   e.preventDefault();
 }
 
