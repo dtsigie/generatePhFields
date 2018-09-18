@@ -112,7 +112,7 @@
         // The A1 notation of the values to retrieve.
         range: 'A1:Z1',
       };
-      params.spreadsheetId = url;
+      // params.spreadsheetId = url;
       console.log(typeof (params.spreadsheetId));
       var request = gapi.client.sheets.spreadsheets.values.get(params);
       request.then(function (response) {
