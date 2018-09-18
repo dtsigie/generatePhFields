@@ -5,10 +5,10 @@ document.querySelector("#phones").addEventListener('click', generatePhones);
 document.querySelector("#fields").addEventListener('click', generateFields);
 
 document.querySelector("#copy-data").addEventListener('click', copyData);
+// let id = document.querySelector('#sheets-url').value.split('/')[5];
+// let url = document.querySelector('#sheets-url').value,
 
-let id = document.querySelector('#sheets-url').value.split('/')[5],
-  url = document.querySelector('#sheets-url').value,
-  outputArea = document.querySelector("#output");
+let outputArea = document.querySelector("#output");
 
 function generatePhones(e) {
   let textarea1 = document.querySelector("#textarea1").value,
