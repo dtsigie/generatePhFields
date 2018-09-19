@@ -10,26 +10,24 @@ function makeApiCall(id) {
   };
   let request = gapi.client.sheets.spreadsheets.values.get(params);
   request.then(function (response) {
-      console.log(response);
-      let result = response.result.values[0],
-        output = '';
-      if (result.length > 0) {
-        for (let i = 0; i < result.length; i++) {
-          output += `
+    console.log(response);
+    let result = response.result.values[0],
+      output = '';
+    if (result.length > 0) {
+      for (let i = 0; i < result.length; i++) {
+        output += `
 - name: ${result[i].toLocaleLowerCase()} 
   type: String
   default: ''`
-        };
-      } else {
-        output = ''
-      }
+      };
+    } else {
+      output = ''
+    }
 
-      document.querySelector("#output").value = output;
-    },
-
-    onerror = function (reason) {
-      console.error('error: ' + reason.result.error.message);
-    });
+    document.querySelector("#output").value = output;
+  }, (reason) => {
+    console.error('error: ' + reason.result.error.message);
+  });
 }
 
 function initClient() {
