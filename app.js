@@ -25,7 +25,8 @@ function makeApiCall(id) {
 
       document.querySelector("#output").value = output;
     },
-    function (reason) {
+
+    onerror = function (reason) {
       console.error('error: ' + reason.result.error.message);
     });
 }
