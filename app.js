@@ -8,13 +8,10 @@ function makeApiCall(id) {
     // The A1 notation of the values to retrieve.
     range: 'A1:Z1',
   };
-  console.log(params.spreadsheetId);
   let request = gapi.client.sheets.spreadsheets.values.get(params);
   request.then(function (response) {
-      console.log(response);
-      let result = response.result.values[0];
-      console.log(result);
-      let output = '';
+      let result = response.result.values[0],
+        output = '';
       if (result.length > 0) {
         for (let i = 0; i < result.length; i++) {
           output += `
@@ -83,10 +80,9 @@ function generatePhones(e) {
 
 function generateFields(e) {
 
-  let field = e.target.parentElement;
-  console.log(field.querySelector('#sheet-url').value);
-  let url = field.querySelector('#sheet-url').value;
-  let id = url.split('/')[5];
+  let field = e.target.parentElement,
+    url = field.querySelector('#sheet-url').value,
+    id = url.split('/')[5];
 
   makeApiCall(id);
 
