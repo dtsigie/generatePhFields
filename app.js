@@ -10,6 +10,7 @@ function makeApiCall(id) {
   };
   let request = gapi.client.sheets.spreadsheets.values.get(params);
   request.then(function (response) {
+      console.log(response);
       let result = response.result.values[0],
         output = '';
       if (result.length > 0) {
