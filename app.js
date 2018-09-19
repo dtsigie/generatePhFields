@@ -80,8 +80,8 @@ function generatePhones(e) {
 
 function generateFields(e) {
 
-  let field = e.target.parentElement,
-    url = field.querySelector('#sheet-url').value,
+  let field = e.target.parentElement;
+  let url = field.querySelector('#sheet-url').value,
     id = url.split('/')[5];
 
   makeApiCall(id);
