@@ -2,16 +2,14 @@
 
 function makeApiCall(id) {
 
-  var params = {
+  let params = {
     // The ID of the spreadsheet to retrieve data from.
     spreadsheetId: id,
     // The A1 notation of the values to retrieve.
     range: 'A1:Z1',
   };
   console.log(params.spreadsheetId);
-  // params.spreadsheetId = url;
-  // console.log(typeof (params.spreadsheetId));
-  var request = gapi.client.sheets.spreadsheets.values.get(params);
+  let request = gapi.client.sheets.spreadsheets.values.get(params);
   request.then(function (response) {
       console.log(response);
       let result = response.result.values[0];
@@ -21,8 +19,8 @@ function makeApiCall(id) {
         for (let i = 0; i < result.length; i++) {
           output += `
 - name: ${result[i].toLocaleLowerCase()} 
-type: String
-default: ''`
+  type: String
+  default: ''`
         };
       } else {
         output = ''
@@ -36,14 +34,14 @@ default: ''`
 }
 
 function initClient() {
-  var API_KEY = 'AIzaSyA2jeOGeEb6MZP6GCyE7fJroDZ_rwFaG1Y';
-  var CLIENT_ID = '217086466266-fktsje9i2kr8hogt07b0u4phvuhvtd0d.apps.googleusercontent.com';
+  let API_KEY = 'AIzaSyA2jeOGeEb6MZP6GCyE7fJroDZ_rwFaG1Y';
+  let CLIENT_ID = '217086466266-fktsje9i2kr8hogt07b0u4phvuhvtd0d.apps.googleusercontent.com';
   //   'https://www.googleapis.com/auth/drive'
   //   'https://www.googleapis.com/auth/drive.file'
   //   'https://www.googleapis.com/auth/drive.readonly'
   //   'https://www.googleapis.com/auth/spreadsheets'
   //   'https://www.googleapis.com/auth/spreadsheets.readonly'
-  var SCOPE = 'https://www.googleapis.com/auth/spreadsheets.readonly';
+  let SCOPE = 'https://www.googleapis.com/auth/spreadsheets.readonly';
 
   gapi.client.init({
     'apiKey': API_KEY,
@@ -61,8 +59,6 @@ document.querySelector("#phones").addEventListener('click', generatePhones);
 document.querySelector("#fields").addEventListener('click', generateFields);
 
 document.querySelector("#copy-data").addEventListener('click', copyData);
-// let id = document.querySelector('#sheets-url').value.split('/')[5];
-// let url = document.querySelector('#sheets-url').value,
 
 let outputArea = document.querySelector("#output");
 
@@ -86,8 +82,6 @@ function generatePhones(e) {
 }
 
 function generateFields(e) {
-  console.log(e);
-  // e.preventDefault();
 
   let field = e.target.parentElement;
   console.log(field.querySelector('#sheet-url').value);
@@ -96,9 +90,13 @@ function generateFields(e) {
 
   makeApiCall(id);
 
+}
 
+
+function generateDataset() {
 
 }
+
 
 function handleClientLoad() {
   gapi.load('client:auth2', initClient);
@@ -119,19 +117,6 @@ function handleSignOutClick(event) {
 }
 
 
-// <script async defer src = "https://apis.google.com/js/api.js"
-// onload = "this.onload=function(){};handleClientLoad()"
-// onreadystatechange = "if (this.readyState === 'complete') this.onload()" > </script>
-
-
-
-
-
-
-
-function generateDataset() {
-
-}
 
 function copyData() {
   outputArea.select();
