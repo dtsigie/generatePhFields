@@ -90,6 +90,10 @@ function generateFields(e) {
 
 
 function generateDataset() {
+  let field = e.target.parentElement;
+  let url = field.querySelector('#sheet-url').value,
+    id = url.split('/')[5];
+  makeApiCall(id);
 
 }
 
