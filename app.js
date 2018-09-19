@@ -30,6 +30,37 @@ function makeApiCall(id) {
   });
 }
 
+function makeApiCallDataset(id) {
+
+  let params = {
+    // The ID of the spreadsheet to retrieve data from.
+    spreadsheetId: id,
+    // The A1 notation of the values to retrieve.
+    range: 'A1:ZZ',
+  };
+  let request = gapi.client.sheets.spreadsheets.values.get(params);
+  request.then(function (response) {
+    console.log(response);
+    let result = response.result.values[0],
+      output = '';
+    if (result.length > 0) {
+      for (let i = 0; i < result.length; i++) {
+        output += `
+- name: ${result[i].toLocaleLowerCase()} 
+  type: String
+  default: ''`
+      };
+    } else {
+      output = ''
+    }
+
+    document.querySelector("#output").value = output;
+  }, (reason) => {
+    console.error('error: ' + reason.result.error.message);
+  });
+}
+
+
 function initClient() {
   let API_KEY = 'AIzaSyA2jeOGeEb6MZP6GCyE7fJroDZ_rwFaG1Y';
   let CLIENT_ID = '217086466266-fktsje9i2kr8hogt07b0u4phvuhvtd0d.apps.googleusercontent.com';
@@ -69,7 +100,7 @@ function generatePhones(e) {
   let newField = textarea1.split(" ");
   for (let i = 0; i < newField.length; i++) {
     output += `
-- phone: ${newField[i]}
+- phone: '${newField[i]}'
   enabled: ${enabled}
   aggregator: ${aggregator}`
 
@@ -93,7 +124,7 @@ function generateDataset() {
   let field = e.target.parentElement;
   let url = field.querySelector('#sheet-url').value,
     id = url.split('/')[5];
-  makeApiCall(id);
+  makeApiCallDataset(id);
 
 }
 
