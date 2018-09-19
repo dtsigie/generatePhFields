@@ -15,10 +15,12 @@ function makeApiCall(id) {
       output = '';
     if (result.length > 0) {
       for (let i = 0; i < result.length; i++) {
-        output += `
+        if (result[i] !== ('customer_id' || 'first_name' || 'last_name' || 'group_list' || 'phone' || 'timezone')) {
+          output += `
 - name: ${result[i].toLocaleLowerCase()} 
   type: String
   default: ''`
+        }
       };
     } else {
       output = ''
