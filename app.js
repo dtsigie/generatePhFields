@@ -6,7 +6,7 @@ function makeApiCall(id) {
     // The ID of the spreadsheet to retrieve data from.
     spreadsheetId: id,
     // The A1 notation of the values to retrieve.
-    range: 'A1:Z1',
+    range: 'A1:ZZ',
   };
   let request = gapi.client.sheets.spreadsheets.values.get(params);
   request.then(function (response) {
