@@ -1,14 +1,16 @@
 //@ts-check
 
-function makeApiCall(x) {
+function makeApiCall(id) {
+
   var params = {
     // The ID of the spreadsheet to retrieve data from.
-    spreadsheetId: '1KKEflFI8w9VXvEPey--x-ImsQwDSQwg2rm76WxOXLvs',
+    spreadsheetId: id,
     // The A1 notation of the values to retrieve.
     range: 'A1:Z1',
   };
-  params.spreadsheetId = url;
-  console.log(typeof (params.spreadsheetId));
+  console.log(params.spreadsheetId);
+  // params.spreadsheetId = url;
+  // console.log(typeof (params.spreadsheetId));
   var request = gapi.client.sheets.spreadsheets.values.get(params);
   request.then(function (response) {
       console.log(response);
@@ -84,7 +86,8 @@ function generatePhones(e) {
 }
 
 function generateFields(e) {
-  e.preventDefault();
+  console.log(e);
+  // e.preventDefault();
 
   let field = e.target.parentElement;
   console.log(field.querySelector('#sheet-url').value);
@@ -92,6 +95,7 @@ function generateFields(e) {
   let id = url.split('/')[5];
 
   makeApiCall(id);
+
 
 
 }
