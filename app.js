@@ -12,10 +12,11 @@ function makeApiCall(id) {
   request.then(function (response) {
     console.log(response);
     let result = response.result.values[0],
+      filter = ['customer_id', 'first_name', 'last_name', 'group_list', 'timezone', 'phone'],
       output = '';
     if (result.length > 0) {
       for (let i = 0; i < result.length; i++) {
-        if (result[i] !== ('customer_id' || 'first_name' || 'last_name' || 'group_list' || 'phone' || 'timezone')) {
+        if (filter.indexOf(result[i]) === -1) {
           output += `
 - name: ${result[i].toLocaleLowerCase()} 
   type: String
@@ -48,15 +49,19 @@ function makeApiCallDataset(id) {
     if (result.length > 0) {
       for (let i = 0; i < result.length; i++) {
         output += `
-- name: ${result[i].toLocaleLowerCase()} 
-  type: String
-  default: ''`
+
+    ${keyfromarray}:
+        ${field}:${value}
+    `
       };
     } else {
       output = ''
     }
 
-    document.querySelector("#output").value = output;
+    document.querySelector("#output").value = `
+    datasets: 
+      ${table_name}:
+        ${output}`;
   }, (reason) => {
     console.error('error: ' + reason.result.error.message);
   });
