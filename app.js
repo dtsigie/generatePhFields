@@ -12,7 +12,7 @@ function makeApiCall(id) {
   request.then(function (response) {
     console.log(response);
     let result = response.result.values[0],
-      filter = ['customer_id', 'first_name', 'last_name', 'group_list', 'timezone', 'phone'],
+      filter = ['customer_id', 'first_name', 'last_name', 'group_list', 'timezone', 'phone', ''],
       output = '';
     if (result.length > 0) {
       for (let i = 0; i < result.length; i++) {
@@ -104,12 +104,15 @@ function generatePhones(e) {
     output = '';
 
   textarea1 = textarea1.replace(/\n/g, " ");
-  let newField = textarea1.split(" ");
+  let newField = textarea1.split(" "),
+    filter = [''];
   for (let i = 0; i < newField.length; i++) {
-    output += `
+    if (filter.indexOf(newField[i]) === -1) {
+      output += `
 - phone: '${newField[i]}'
   enabled: ${enabled}
   aggregator: ${aggregator}`
+    }
 
   }
   document.querySelector("#output").value = output;
