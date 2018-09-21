@@ -11,6 +11,7 @@ function makeApiCall(id) {
   request.then(
     function(response) {
       console.log(response);
+      console.log(typeof response.result.values);
       let result = response.result.values[0],
         filter = [
           "customer_id",
