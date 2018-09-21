@@ -147,7 +147,7 @@ function generateFields(e) {
   makeApiCall(id);
 }
 
-function generateDataset() {
+function generateDataset(e) {
   let field = e.target.parentElement;
   let url = field.querySelector("#dataset-url").value,
     id = url.split("/")[5];
