@@ -59,20 +59,24 @@ function makeApiCallDataset(id) {
         output = "";
       if (result.length > 0) {
         for (let i = 0; i < result.length; i++) {
-          output += `
+          output += result.length[i];
 
-    ${keyfromarray}:
-        ${field}:${value}
-    `;
+    // ${keyfromarray}:
+    //     ${field}:${value}
+    // `;
+    //     }
+    //   } else {
+    //     output = "";
+    //   }
+
+    //   document.querySelector("#output").value = `
+    // datasets: 
+    //   ${table_name}:
+    //     ${output}`;
         }
-      } else {
-        output = "";
-      }
-
-      document.querySelector("#output").value = `
-    datasets: 
-      ${table_name}:
-        ${output}`;
+        console.log(output);
+    } else {
+        console.log('error');
     },
     reason => {
       console.error("error: " + reason.result.error.message);
@@ -145,7 +149,7 @@ function generateFields(e) {
 
 function generateDataset() {
   let field = e.target.parentElement;
-  let url = field.querySelector("#sheet-url").value,
+  let url = field.querySelector("#dataset-url").value,
     id = url.split("/")[5];
   makeApiCallDataset(id);
 }
