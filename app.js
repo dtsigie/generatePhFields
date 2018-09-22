@@ -63,7 +63,8 @@ function makeApiCallDataset(id, table_name) {
           pre_output += `
                ${result[0][j]}:${result[i][j]}`;
         }
-        output += `${result[i][0]}:
+        output += `
+        ${result[i][0]}:
           ${pre_output}`;
       }
       document.querySelector("#output").value = `
