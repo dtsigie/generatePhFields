@@ -57,26 +57,16 @@ function makeApiCallDataset(id) {
       console.log(response);
       let result = response.result.values[0],
         output = "";
-      if (result.length > 0) {
-        for (let i = 0; i < result.length; i++) {
-          output += result.length[i];
-
-    // ${keyfromarray}:
-    //     ${field}:${value}
-    // `;
-    //     }
-    //   } else {
-    //     output = "";
-    //   }
-
-    //   document.querySelector("#output").value = `
-    // datasets: 
-    //   ${table_name}:
-    //     ${output}`;
+      for (let i = 0; i < result.length; i++) {
+        for (let j = 0; j < result[0].length; j++) {
+          output += `
+            ${result[i][0]}:
+               ${result[0][j]}:${result[i][j]}`;
         }
-        console.log(output);
-    } else {
-        console.log('error');
+      }
+      document.querySelector("#output").value = `
+        dataset: 
+          ${output}`;
     },
     reason => {
       console.error("error: " + reason.result.error.message);
