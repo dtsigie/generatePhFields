@@ -56,13 +56,17 @@ function makeApiCallDataset(id) {
     function(response) {
       console.log(response);
       let result = response.result.values,
-        output = "";
+        output = "",
+        pre_output = "";
       for (let i = 0; i < result.length; i++) {
         for (let j = 0; j < result[0].length; j++) {
-          output += `
-            ${result[i][0]}:
+          pre_output += `
                ${result[0][j]}:${result[i][j]}`;
         }
+        output = `
+        ${result[i][0]}:
+          ${pre_output}
+        `;
       }
       document.querySelector("#output").value = `
         dataset: 
