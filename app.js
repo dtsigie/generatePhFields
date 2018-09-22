@@ -60,12 +60,11 @@ function makeApiCallDataset(id, table_name) {
       for (let i = 1; i < result.length; i++) {
         let pre_output = "";
         for (let j = 1; j < result[0].length; j++) {
-          pre_output += `
-               ${result[0][j]}:${result[i][j]}`;
+          pre_output += `${result[0][j]}:${result[i][j]}`;
         }
         output += `
-        ${result[i][0]}:
-          ${pre_output}`;
+            ${result[i][0]}:
+              ${pre_output}`;
       }
       document.querySelector("#output").value = `
         datasets: 
