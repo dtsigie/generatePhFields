@@ -44,7 +44,7 @@ function makeApiCall(id) {
   );
 }
 
-function makeApiCallDataset(id) {
+function makeApiCallDataset(id, table_name) {
   let params = {
     // The ID of the spreadsheet to retrieve data from.
     spreadsheetId: id,
@@ -63,11 +63,9 @@ function makeApiCallDataset(id) {
           pre_output += `
                ${result[0][j]}:${result[i][j]}`;
         }
-        output += `
-        ${result[i][0]}:
+        output += `${result[i][0]}:
           ${pre_output}`;
       }
-      let table_name = document.querySelector("#table-name").value;
       document.querySelector("#output").value = `
         datasets: 
           ${table_name}:
@@ -146,8 +144,9 @@ function generateFields(e) {
 function generateDataset(e) {
   let field = e.target.parentElement;
   let url = field.querySelector("#dataset-url").value,
+    table_name = field.querySelector("#table-name").value,
     id = url.split("/")[5];
-  makeApiCallDataset(id);
+  makeApiCallDataset(id, table_name);
 }
 
 function handleClientLoad() {
