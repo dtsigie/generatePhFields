@@ -58,8 +58,8 @@ function makeApiCallDataset(id) {
       let result = response.result.values,
         output = "",
         pre_output = "";
-      for (let i = 0; i < result.length; i++) {
-        for (let j = 0; j < result[0].length; j++) {
+      for (let i = 1; i < result.length; i++) {
+        for (let j = 1; j < result[0].length; j++) {
           pre_output += `
                ${result[0][j]}:${result[i][j]}`;
         }
