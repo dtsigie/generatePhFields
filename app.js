@@ -61,7 +61,7 @@ function makeApiCallDataset(id, table_name) {
         let pre_output = "";
         for (let j = 1; j < result[0].length; j++) {
           pre_output += `
-      ${result[0][j]}: ${result[i][j].toString()}`;
+      ${result[0][j]}: '${result[i][j]}'`;
         }
         output += `
     ${result[i][0]}:${pre_output}`;
