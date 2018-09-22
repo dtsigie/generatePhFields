@@ -63,13 +63,13 @@ function makeApiCallDataset(id, table_name) {
           pre_output += `${result[0][j]}: ${result[i][j]}
 `;
         }
-        output += `${result[i][0]}:
-      ${pre_output}`;
+        output += `
+    ${result[i][0]}:
+${pre_output}`;
       }
       document.querySelector("#output").value = `
 datasets: 
-  ${table_name}:
-    ${output}`;
+  ${table_name}:${output}`;
     },
     reason => {
       console.error("error: " + reason.result.error.message);
