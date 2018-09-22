@@ -105,6 +105,7 @@ document.querySelector("#phones").addEventListener("click", generatePhones);
 document.querySelector("#fields").addEventListener("click", generateFields);
 
 document.querySelector("#copy-data").addEventListener("click", copyData);
+document.querySelector("#dataset").addEventListener("click", generateDataset);
 
 let outputArea = document.querySelector("#output");
 
