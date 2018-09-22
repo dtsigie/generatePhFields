@@ -63,7 +63,7 @@ function makeApiCallDataset(id) {
           pre_output += `
                ${result[0][j]}:${result[i][j]}`;
         }
-        output = `
+        output += `
         ${result[i][0]}:
           ${pre_output}
         `;
