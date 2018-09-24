@@ -75,12 +75,12 @@
             <button id="phones" class="waves-effect waves-light btn-small" onclick="generatePhones()">Extract Phone
               Numbers</button>
             <div class="col s12 m12" style="padding: 0px">
-              <input id="sheet-url" type="text" placeholder="insert Google sheets profile filed url">
+              <input id="sheet-url" type="text" placeholder="insert Google sheets profile filed url" required>
               <button id="fields" class="waves-effect waves-light btn-small" onclick="generateFields()">Extract
                 Fields</button>
-              <input id="dataset-url" type="text" placeholder="insert Google sheets dataset url">
+              <input id="dataset-url" type="text" placeholder="insert Google sheets dataset url" required>
               <!-- TO DO: Add filter and warning if the table name already exists-->
-              <input id="table-name" type="text" placeholder="insert table name">
+              <input id="table-name" type="text" placeholder="insert table name" required>
               <button id="dataset" class="waves-effect waves-light btn-small" onclick="generateDataset()">Extract
                 Dataset</button>
             </div>
