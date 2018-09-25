@@ -16,6 +16,8 @@ button {
   width: 100%;
   overflow: auto;
   background-color: transparent;
+  color: #bf360c;
+  font-weight: bold;
 
 
 }
