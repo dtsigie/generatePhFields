@@ -56,9 +56,10 @@ function makeApiCallDataset(id, table_name) {
     function(response) {
       console.log(response);
       let result = response.result.values,
-        output = "";
+        output = "",
+        count = 0,
+        pre_output = "";
       for (let i = 1; i < result.length; i++) {
-        let pre_output = "";
         for (let j = 1; j < result[0].length; j++) {
           pre_output += `
       ${result[0][j]}: "${result[i][j]}"`;
