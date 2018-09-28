@@ -22,6 +22,11 @@ button {
 
 }
 
+i.fas,
+.far {
+  margin-right: 10px;
+}
+
 /* #sign {
   align-items: right !important;
 } */

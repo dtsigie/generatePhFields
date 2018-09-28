@@ -7,11 +7,13 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+    crossorigin="anonymous">
   <link rel="shortcut icon" href="favicon.png" type="image/png">
 
 
 
-  <title>Generate Fields</title>
+  <title>Extractor</title>
 </head>
 
 <body>
@@ -73,18 +75,19 @@
           <div class="input-field col m12 s12">
             <textarea id="textarea1" class="materialize-textarea"></textarea>
             <label for="textarea1">Insert phone numbers</label>
-            <button id="phones" class="waves-effect waves-light btn-small" onclick="generatePhones()">Extract Phone
+            <button id="phones" class="waves-effect waves-light btn-small" onclick="generatePhones()"><i class="fas fa-phone"></i>Extract
+              Phone
               Numbers</button>
             <div class="col s12 m12" style="padding: 0px">
               <input id="sheet-url" type="text" placeholder="insert Google sheets profile filed url" required>
-              <button id="fields" class="waves-effect waves-light btn-small" onclick="generateFields()">Extract
-                Fields</button>
-
-              <!-- TO DO: Add filter and warning if the table name already exists-->
+              <button id="fields" class="waves-effect waves-light btn-small" onclick="generateFields()"><i class="fas fa-table"></i>Extract
+                Fields </button>
+              <!-- TO DO: Add filter and warning if the table name
+                    already exists-->
 
               <input id="dataset-url" type="text" placeholder="insert Google sheets dataset url" required>
               <input id="table-name" type="text" placeholder="insert table name" required>
-              <button id="dataset" class="waves-effect waves-light btn-small" onclick="generateDataset()">Extract
+              <button id="dataset" class="waves-effect waves-light btn-small" onclick="generateDataset()"><i class="fas fa-database"></i>Extract
                 Dataset</button>
 
             </div>
@@ -103,7 +106,7 @@
       </div>
       <div class="col m6 s12">
         <h6> Output will be generated below:</h6>
-        <button id="copy-data" class="waves-effect waves-light btn-small blue" onclick="copyData()">Copy</button>
+        <button id="copy-data" class="waves-effect waves-light btn-small blue" onclick="copyData()"><i class="far fa-copy"></i>Copy</button>
         <div id="output-area">
           <textarea id="output" class="materialize-textarea" value=""></textarea>
         </div>
