@@ -22,9 +22,9 @@ button {
 
 }
 
-i.fas,
+.fas,
 .far {
-  margin-right: 10px;
+  margin-right: 10px !important;
 }
 
 /* #sign {
